@@ -1,0 +1,33 @@
+<body>
+    <table border="1" width="100%">
+        <caption>Danh sách thông tin nhân viên</caption>
+        <tr>
+            <th>IDPB</th>
+            <th>Tên phòng ban</th>
+            <th>Mô tả</th>
+            <th>Xem nhân viên</th>
+        </tr>
+        <?php
+        for ($i = 0; $i < sizeof($phongBans); $i++) {
+        ?>
+        <tr>
+            <td>
+                <?php echo $phongBans[$i]->id ?>
+            </td>
+            <td>
+                <?php echo $phongBans[$i]->tenpb ?>
+            </td>
+            <td>
+                <?php echo $phongBans[$i]->mota ?>
+            </td>
+            <td>
+                <a href="../Controller/Controller_NhanVien.php?mod1='1'&IDPB=<?php echo $phongBans[$i]->id?>">xxx</a>
+            </td>
+        </tr>
+        <?php
+        }
+        ?>
+    </table>
+</body>
+
+</html>

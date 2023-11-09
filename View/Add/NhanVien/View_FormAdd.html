@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    
+</head>
+
+<body>
+    <form action="../Controller/Controller_NhanVien.php?mod3='1'&action=add" name="formChenNV" method="post"
+        onsubmit="submitForm(event)">
+        <table>
+            <tr>
+                <td><label for="IDNV">Mã nhân viên</label></td>
+                <td><input type="text" name="IDNV" id="" placeholder="VD: NV01" onblur="checkExistID()"></td>
+            </tr>
+            <tr>
+                <td><label for="hoten">Họ tên nhân viên</label></td>
+                <td><input type="text" name="hoten" id="" placeholder="VD: Nguyễn Văn A"></td>
+            </tr>
+            <tr>
+                <td><label for="diachi">Địa chỉ nhân viên</label></td>
+                <td><input type="text" name="diachi" id="" placeholder="Số nhà, tên đường, ... "></td>
+            </tr>
+            <tr>
+                <td><label for="IDPB">Chọn phòng ban</label></td>
+                <td>
+                    <select name="IDPB" id="">
+                        <?php
+                        for ($i = 0; $i < sizeof($phongbans); $i++) {
+                        ?>
+                        <option value="<?php echo $phongbans[$i]->id ?>">
+                            <?php echo $phongbans[$i]->tenpb ?>
+                        </option>
+                        <?php
+                        }
+                        ?>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="OK">
+                    <input type="reset" value="Reset">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+<script>
+    function checkValidForm() {
+        var maNV = document.formChenNV.IDNV.value;
+
+        if (maNV === "") {
+            alert('chưa nhập mã nhân viên');
+            return false;
+        }
+
+        var hoTen = document.formChenNV.hoten.value;
+
+        if (hoTen === "") {
+            alert('chưa nhập họ tên cho nhân viên');
+            return false;
+        }
+
+        var diachi = document.formChenNV.diachi.value;
+
+        if (diachi === "") {
+            alert('chưa nhập địa chỉ cho nhân viên');
+        }
+
+        return true;
+    }
+
+    function submitForm(event) {
+        event.preventDefault();
+
+        if (!checkValidForm()) {
+            return;
+        }
+
+        document.formChenNV.submit();
+    }
+</script>
+
+</html>
