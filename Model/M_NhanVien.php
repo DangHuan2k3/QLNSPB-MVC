@@ -107,4 +107,15 @@ class Model_NhanVien
 
         return $result;
     }
+
+    public function delete($id)
+    {
+        $link = mysqli_connect("localhost", "root", "");
+
+        mysqli_select_db($link, "baitapapdung");
+
+        $query = "DELETE FROM `nhanvien` WHERE `IDNV` = '" . $id . "'";
+        echo $query;
+        mysqli_query($link, $query);
+    }
 }

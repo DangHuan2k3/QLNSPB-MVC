@@ -102,6 +102,21 @@ class Controller_NhanVien
                 include_once('../View/Update/NhanVien/View_NhanVienList.html');
             }
         }
+
+        if (isset($_REQUEST['mod5'])) {
+            $M_NhanVien = new Model_NhanVien();
+            $nhanviens = $M_NhanVien->getAllNhanViens();
+            if (isset($_REQUEST['action'])) {
+
+                for ($i = 0; $i < sizeof($nhanviens); $i++) {
+                    if (isset($_REQUEST[$nhanviens[$i]->IDNV])) {
+                        $M_NhanVien->delete($_REQUEST[$nhanviens[$i]->IDNV]);
+                    }
+                }
+            }
+            $nhanviens = $M_NhanVien->getAllNhanViens();
+            include_once('../View/Delete/NhanVien/View_NhanVienList.html');
+        }
     }
 }
 

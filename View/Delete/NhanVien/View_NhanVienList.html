@@ -1,0 +1,42 @@
+<body>
+    <form action="../Controller/Controller_NhanVien.php?mod5='1'&action=delete" method="post">
+
+        <table border="1" width="100%">
+            <caption>Danh sách thông tin nhân viên</caption>
+            <tr>
+                <th>IDNV</th>
+                <th>Họ tên</th>
+                <th>IDPB</th>
+                <th>Địa chỉ</th>
+                <th>Chỉnh sửa</th>
+            </tr>
+            <?php
+            for ($i = 0; $i < sizeof($nhanviens); $i++) {
+            ?>
+                <tr>
+                    <td>
+                        <?php echo $nhanviens[$i]->IDNV ?>
+                    </td>
+                    <td>
+                        <?php echo $nhanviens[$i]->hoten ?>
+                    </td>
+                    <td>
+                        <?php echo $nhanviens[$i]->IDPB ?>
+                    </td>
+                    <td>
+                        <?php echo $nhanviens[$i]->diachi ?>
+                    </td>
+                    <td>
+                        <input type="checkbox" name="<?php echo $nhanviens[$i]->IDNV ?>" value="<?php echo $nhanviens[$i]->IDNV ?>" class="checkbox">
+                    </td>
+                </tr>
+            <?php
+            }
+            ?>
+        </table>
+        <input type="submit" value="Xoá">
+    </form>
+
+</body>
+
+</html>
