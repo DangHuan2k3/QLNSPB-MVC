@@ -11,12 +11,12 @@ if (!isset($_SESSION['isloggedin'])) {
         <title>Document</title>
     </head>
     <frameset rows="25%,*,10%" frameborder="0">
-        <frame src="./Controller/Controller_Admin.php"> </frame>
+        <frame src="./Controller/Controller_Admin.php" name="header"> </frame>
         <frameset cols="25%,*" frameborder="0">
             <frame src="T2.php" name="tab"> </frame>
             <frame src="T3.php" name="frameMainContent"> </frame>
         </frameset>
-        <frame src="T5.htm"> </frame>
+        <frame src="T5.php"> </frame>
     </frameset>
 
     </html>

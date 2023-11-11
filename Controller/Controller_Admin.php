@@ -5,7 +5,7 @@ class Controller_Admin
     public function invoke()
     {
 
-        if (isset($_REQUEST['action']))
+        if (isset($_REQUEST['action'])) {
             if ($_REQUEST['action'] == 'login') {
                 $M_Admin = new Model_Admin();
                 if ($M_Admin->isLogin($_REQUEST['txtUsername'], $_REQUEST['txtPassword'])) {
@@ -13,10 +13,11 @@ class Controller_Admin
                     $_SESSION['isloggedin'] = '1';
 
 ?>
-                <script>
-                    window.top.tab.location.href = '../T2_login.php';
-                </script>
-<?php
+                    <script>
+                        window.top.tab.location.href = '../T2_login.php';
+                        window.top.header.location.href = '../T1.php';
+                    </script>
+                <?php
                     return;
                 } else {
                     echo "Dang nhap that bai";
@@ -24,7 +25,17 @@ class Controller_Admin
                     return;
                 }
             }
-        include('../View/Login/View_login.html');
+            if ($_REQUEST['action'] == 'logout') {
+                include('../View/Login/View_login.html');
+                ?>
+                <script>
+                    window.top.tab.location.href = '../T2.php';
+                </script>
+<?php
+            }
+        } else {
+            include('../View/Login/View_login.html');
+        }
     }
 }
 
